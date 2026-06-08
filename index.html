@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Haruna Diyaul'haq Ndakwogi | Web Software Developer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Haruna Diyaul'haq Ndakwogi – Web Software Developer (Laravel/PHP) with experience in school management, healthcare systems, and government tax platforms.">
+    <style>
+        /* ========== Base Styles ========== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: #0f172a;
+            color: #e5e7eb;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* ========== Header & Navigation ========== */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .site-header.scrolled {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.9rem 0;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.2rem;
+        }
+
+        .nav-links li a {
+            font-size: 0.95rem;
+            color: #cbd5f5;
+            position: relative;
+            padding-bottom: 0.2rem;
+        }
+
+        .nav-links li a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background: #38bdf8;
+            transition: width 0.25s ease;
+        }
+
+        .nav-links li a:hover::after,
+        .nav-links li a.active::after {
+            width: 100%;
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .nav-toggle span {
+            width: 22px;
+            height: 2px;
+            background: #e5e7eb;
+        }
+
+        /* ========== Hero Section ========== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 4.5rem;
+            padding-bottom: 3rem;
+        }
+
+        .hero-inner {
+            display: grid;
+            grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .hero-subtitle {
+            color: #38bdf8;
+            font-size: 0.9rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 0.7rem;
+        }
+
+        .hero-title {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero-title span {
+            color: #38bdf8;
+        }
+
+        .hero-text {
+            color: #cbd5f5;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-meta {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-meta span {
+            color: #e5e7eb;
+            font-weight: 500;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.7rem 1.4rem;
+            border-radius: 0.7rem;
+            font-size: 0.9rem;
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, color 0.15s ease;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background: #38bdf8;
+            color: #0f172a;
+            box-shadow: 0 12px 30px rgba(56, 189, 248, 0.35);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 18px 40px rgba(56, 189, 248, 0.45);
+        }
+
+        .btn-outline {
+            border-color: #64748b;
+            color: #e5e7eb;
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: #1f2937;
+        }
+
+        .hero-image-card {
+            background: radial-gradient(circle at top left, #38bdf8 0, #0f172a 40%);
+            border-radius: 1.2rem;
+            padding: 1.6rem;
+            border: 1px solid rgba(148, 163, 184, 0.3);
+            box-shadow: 0 18px 50px rgba(15, 23, 42, 0.9);
+        }
+
+        .hero-tag {
+            display: inline-block;
+            padding: 0.15rem 0.6rem;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(148, 163, 184, 0.5);
+            font-size: 0.7rem;
+            margin-bottom: 0.7rem;
+        }
+
+        .stack-list {
+            list-style: none;
+            margin-top: 0.8rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            font-size: 0.8rem;
+        }
+
+        .stack-list li {
+            background: rgba(15, 23, 42, 0.7);
+            border-radius: 999px;
+            padding: 0.3rem 0.7rem;
+            border: 1px solid rgba(148, 163, 184, 0.4);
+        }
+
+        /* ========== Sections ========== */
+        .section {
+            padding: 4rem 0 3rem;
+        }
+
+        .section-header {
+            margin-bottom: 2rem;
+        }
+
+        .section-kicker {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: #38bdf8;
+            margin-bottom: 0.4rem;
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .section-subtitle {
+            font-size: 0.95rem;
+            color: #94a3b8;
+        }
+
+        /* ========== About ========== */
+        .about-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+            gap: 2rem;
+        }
+
+        .about-text p + p {
+            margin-top: 0.8rem;
+        }
+
+        .about-meta {
+            margin-top: 1.2rem;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.9rem;
+            font-size: 0.9rem;
+        }
+
+        .about-meta-item {
+            background: #020617;
+            padding: 0.9rem;
+            border-radius: 0.9rem;
+            border: 1px solid rgba(148, 163, 184, 0.25);
+        }
+
+        .about-meta-label {
+            color: #94a3b8;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+        }
+
+        .about-meta-value {
+            font-weight: 500;
+        }
+
+        /* ========== Skills & Experience ========== */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.2rem;
+        }
+
+        .skill-card {
+            background: #020617;
+            border-radius: 0.9rem;
+            padding: 1rem;
+            border: 1px solid rgba(148, 163, 184, 0.25);
+        }
+
+        .skill-card h3 {
+            font-size: 1rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .skill-card ul {
+            list-style: none;
+            font-size: 0.9rem;
+            color: #cbd5f5;
+        }
+
+        .skill-card ul li + li {
+            margin-top: 0.3rem;
+        }
+
+        .exp-card {
+            background: #020617;
+            border-radius: 0.9rem;
+            padding: 1rem;
+            border: 1px solid rgba(148, 163, 184, 0.25);
+            margin-bottom: 1rem;
+        }
+
+        .exp-title {
+            font-weight: 600;
+            font-size: 1rem;
+            color: #38bdf8;
+        }
+
+        .exp-company {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            margin-bottom: 0.4rem;
+        }
+
+        .exp-desc {
+            font-size: 0.9rem;
+            color: #cbd5f5;
+        }
+
+        /* ========== Projects ========== */
+        .projects-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .filter-btn {
+            border-radius: 999px;
+            padding: 0.4rem 0.9rem;
+            border: 1px solid rgba(148, 163, 184, 0.5);
+            font-size: 0.8rem;
+            background: #020617;
+            cursor: pointer;
+            color: #e5e7eb;
+        }
+
+        .filter-btn.active {
+            background: #38bdf8;
+            color: #0f172a;
+            border-color: #38bdf8;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.2rem;
+        }
+
+        .project-card {
+            background: #020617;
+            padding: 1rem;
+            border-radius: 0.9rem;
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-name {
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .project-type {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            margin-bottom: 0.6rem;
+        }
+
+        .project-desc {
+            font-size: 0.9rem;
+            color: #cbd5f5;
+            margin-bottom: 0.8rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            font-size: 0.78rem;
+        }
+
+        .project-tags span {
+            background: rgba(15, 23, 42, 0.9);
+            border-radius: 999px;
+            padding: 0.2rem 0.6rem;
+            border: 1px solid rgba(148, 163, 184, 0.4);
+        }
+
+        .project-links {
+            margin-top: 0.8rem;
+            font-size: 0.85rem;
+        }
+
+        .project-links a {
+            color: #38bdf8;
+        }
+
+        /* ========== Contact ========== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+            gap: 2rem;
+        }
+
+        .contact-card {
+            background: #020617;
+            border-radius: 0.9rem;
+            padding: 1.2rem;
+            border: 1px solid rgba(148, 163, 184, 0.25);
+            font-size: 0.9rem;
+        }
+
+        .contact-card p + p {
+            margin-top: 0.5rem;
+        }
+
+        .contact-details {
+            margin-top: 1rem;
+            list-style: none;
+        }
+
+        .contact-details li + li {
+            margin-top: 0.4rem;
+        }
+
+        .contact-details span {
+            color: #94a3b8;
+            font-size: 0.85rem;
+        }
+
+        .contact-form {
+            background: #020617;
+            border-radius: 0.9rem;
+            padding: 1.2rem;
+            border: 1px solid rgba(148, 163, 184, 0.25);
+        }
+
+        .form-group {
+            margin-bottom: 0.8rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.6rem 0.7rem;
+            border-radius: 0.5rem;
+            border: 1px solid rgba(148, 163, 184, 0.4);
+            background: #020617;
+            color: #e5e7eb;
+            font: inherit;
+        }
+
+        .form-group textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+
+        .form-note {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            margin-top: 0.4rem;
+        }
+
+        #contactMessage {
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            color: #22c55e;
+            display: none;
+        }
+
+        #contactMessage.visible {
+            display: block;
+        }
+
+        /* ========== Footer ========== */
+        footer {
+            border-top: 1px solid rgba(148, 163, 184, 0.3);
+            padding: 1rem 0 1.5rem;
+            font-size: 0.8rem;
+            color: #94a3b8;
+            text-align: center;
+        }
+
+        /* ========== Back to Top Button ========== */
+        #backToTop {
+            position: fixed;
+            right: 1.4rem;
+            bottom: 1.4rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 999px;
+            border: none;
+            background: #38bdf8;
+            color: #0f172a;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 12px 30px rgba(56, 189, 248, 0.4);
+            z-index: 900;
+        }
+
+        #backToTop.show {
+            display: flex;
+        }
+
+        /* ========== Responsive ========== */
+        @media (max-width: 900px) {
+            .hero-inner,
+            .about-grid,
+            .skills-grid,
+            .projects-grid,
+            .contact-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .projects-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 700px) {
+            .nav-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                right: 0;
+                flex-direction: column;
+                background: #020617;
+                padding: 0.8rem 1rem;
+                border-radius: 0 0 0.9rem 0.9rem;
+                border-left: 1px solid rgba(148, 163, 184, 0.4);
+                border-bottom: 1px solid rgba(148, 163, 184, 0.4);
+                display: none;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .hero-inner {
+                text-align: left;
+            }
+
+            .skills-grid,
+            .projects-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .hero-actions {
+                justify-content: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container nav-container">
+        <div class="logo">
+            <span>HN</span> • Web Software Dev
+        </div>
+        <nav>
+            <div class="nav-toggle" id="navToggle">
+                <span></span><span></span><span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <!-- ========== Hero ========== -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-inner">
+                <div>
+                    <div class="hero-subtitle">Hello, I’m</div>
+                    <h1 class="hero-title">Haruna Diyaul'haq Ndakwogi <span>• Software Developer</span></h1>
+                    <p class="hero-text">
+                        Laravel/PHP developer with 5+ years of experience building end-to-end systems for education, healthcare, and government. I design robust backends, integrate APIs, and deliver reliable web solutions.
+                    </p>
+                    <p class="hero-meta">
+                        <span>Based in:</span> Abuja, Nigeria · <span>Open to:</span> Remote & On-site
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#projects" class="btn btn-primary">View Projects</a>
+                        <a href="Haruna_Diyaulhaq_Ndakwogi_CV.pdf" class="btn btn-outline" target="_blank">Download CV (PDF)</a>
+                    </div>
+                </div>
+                <aside class="hero-image-card">
+                    <div class="hero-tag">M.Sc. IT (in progress) • NOUN</div>
+                    <h3>Web Software Developer / IT Specialist</h3>
+                    <p style="font-size:0.9rem;color:#e5e7eb;margin-top:0.4rem;">
+                        I build practical, scalable systems used by real people — from tax administration platforms to school management portals.
+                    </p>
+                    <ul class="stack-list">
+                        <li>Laravel</li>
+                        <li>PHP</li>
+                        <li>JavaScript</li>
+                        <li>jQuery</li>
+                        <li>MySQL</li>
+                        <li>REST APIs</li>
+                        <li>Git</li>
+                        <li>HTML/CSS</li>
+                    </ul>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== About ========== -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-kicker">About</div>
+                <h2 class="section-title">Who I Am</h2>
+                <p class="section-subtitle">Computer Science graduate, MSc IT candidate, and practical problem solver.</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>
+                        I hold a B.Sc. in Computer Science (Second Class Upper) from Al-Qalam University, Katsina, and I'm currently pursuing an M.Sc. in Information Technology at the National Open University of Nigeria. Over the years, I've worked with Hilinks Network Solutions on contract-based projects, delivering full-stack web applications for schools, hospitals, and government agencies.
+                    </p>
+                    <p>
+                        My expertise includes Laravel, PHP, JavaScript, jQuery, MySQL, and RESTful API integration. I follow the full SDLC — from requirements gathering to deployment and maintenance. I take pride in writing clean, maintainable code and optimizing existing systems for performance and reliability.
+                    </p>
+                    <p>
+                        I'm a member of the Computer Society of Nigeria (NCS) and the Cyber Security Expert Association of Nigeria (CSEAN). I'm always eager to learn new technologies and take on challenging projects that make a difference.
+                    </p>
+                    <div class="about-meta">
+                        <div class="about-meta-item">
+                            <div class="about-meta-label">Degree</div>
+                            <div class="about-meta-value">B.Sc. Computer Science (2:1)</div>
+                        </div>
+                        <div class="about-meta-item">
+                            <div class="about-meta-label">Masters</div>
+                            <div class="about-meta-value">M.Sc. IT (in progress)</div>
+                        </div>
+                        <div class="about-meta-item">
+                            <div class="about-meta-label">Location</div>
+                            <div class="about-meta-value">Abuja, Nigeria</div>
+                        </div>
+                        <div class="about-meta-item">
+                            <div class="about-meta-label">Memberships</div>
+                            <div class="about-meta-value">NCS, CSEAN</div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="contact-card">
+                        <h3 style="margin-bottom:0.5rem;">Core Competencies</h3>
+                        <ul style="margin-left: 1.2rem; margin-top: 0.5rem;">
+                            <li>Backend & frontend web development</li>
+                            <li>Web application architecture & design</li>
+                            <li>Database design & management (MySQL)</li>
+                            <li>Requirements gathering & documentation</li>
+                            <li>Troubleshooting, debugging & optimization</li>
+                            <li>REST API integration & development</li>
+                        </ul>
+                        <p style="margin-top: 1rem;"><strong>Interests:</strong> Writing code, football, solving complex problems.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== Skills ========== -->
+    <section id="skills" class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-kicker">Technical Skills</div>
+                <h2 class="section-title">What I Work With</h2>
+                <p class="section-subtitle">Core technologies and tools I use daily.</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Languages & Frameworks</h3>
+                    <ul>
+                        <li>PHP (Laravel)</li>
+                        <li>JavaScript & jQuery</li>
+                        <li>HTML5, CSS3</li>
+                        <li>Basic: Java, Python, Vue</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Databases & Backend</h3>
+                    <ul>
+                        <li>MySQL (design, queries, optimization)</li>
+                        <li>RESTful APIs & JSON</li>
+                        <li>Authentication, authorization, validation</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Tools & Workflow</h3>
+                    <ul>
+                        <li>Git & GitHub</li>
+                        <li>Composer, npm basics</li>
+                        <li>Testing & debugging</li>
+                        <li>SDLC & Agile principles</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== Experience ========== -->
+    <section id="experience" class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-kicker">Professional Experience</div>
+                <h2 class="section-title">Where I've Worked</h2>
+                <p class="section-subtitle">Project-based and contract roles delivering real-world solutions.</p>
+            </div>
+            <div class="exp-card">
+                <div class="exp-title">Software Engineer (Contract / Project-Based)</div>
+                <div class="exp-company">Hilinks Network Solutions Limited, Abuja | 2021 – Present</div>
+                <div class="exp-desc">
+                    Designed and maintained web applications including School Management, Hospital Management, Loan Management, and Payroll systems. Built Laravel-based backends and responsive frontends (PHP, JavaScript, jQuery). Designed MySQL databases, integrated REST APIs for payments and records management. Participated in full SDLC: requirements, design, implementation, testing, deployment, and ongoing maintenance. Optimized production systems for performance, reliability, and user experience.
+                </div>
+            </div>
+            <div class="exp-card">
+                <div class="exp-title">Freelance Web Developer</div>
+                <div class="exp-company">Various Clients | 2020 – Present</div>
+                <div class="exp-desc">
+                    Delivered custom web solutions for small businesses and educational institutions. Responsibilities included gathering requirements, building custom dashboards, database design, and deploying applications on shared hosting environments (cPanel). Provided training and documentation to non-technical staff.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== Projects ========== -->
+    <section id="projects" class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-kicker">Key Projects</div>
+                <h2 class="section-title">Notable Deliverables</h2>
+                <p class="section-subtitle">Real systems I've built or contributed to for government, education, and healthcare.</p>
+            </div>
+
+            <div class="projects-header">
+                <p style="font-size:0.9rem;color:#94a3b8;">
+                    A selection of production-grade applications.
+                </p>
+                <div class="filter-group">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="government">Government</button>
+                    <button class="filter-btn" data-filter="education">Education</button>
+                    <button class="filter-btn" data-filter="healthcare">Healthcare</button>
+                </div>
+            </div>
+
+            <div class="projects-grid">
+                <!-- ITAS - Sokoto & Taraba -->
+                <article class="project-card" data-category="government">
+                    <div>
+                        <h3 class="project-name">Integrated Tax Administration System (ITAS)</h3>
+                        <div class="project-type">Government Tax Platform</div>
+                        <p class="project-desc">
+                            Web-based tax administration platform for state governments. Configured modules for taxpayer records, tax collections, assessments, and reporting for Sokoto State and Taraba State deployments.
+                        </p>
+                        <div class="project-tags">
+                            <span>Laravel</span><span>MySQL</span><span>jQuery</span><span>Reporting</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <span style="color:#94a3b8;">Internal government system</span>
+                    </div>
+                </article>
+
+                <!-- FCT College of Education Portal -->
+                <article class="project-card" data-category="education">
+                    <div>
+                        <h3 class="project-name">FCT College of Education Zuba Portal</h3>
+                        <div class="project-type">Central Staff & Student Portal</div>
+                        <p class="project-desc">
+                            Central web portal for staff and students, featuring authentication, role-based dashboards, course registration, and result checking.
+                        </p>
+                        <div class="project-tags">
+                            <span>Laravel</span><span>PHP</span><span>MySQL</span><span>Bootstrap</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <span style="color:#94a3b8;">Internal deployment</span>
+                    </div>
+                </article>
+
+                <!-- RFID Smart Card Management System -->
+                <article class="project-card" data-category="education">
+                    <div>
+                        <h3 class="project-name">RFID Student & Staff Smart Card System</h3>
+                        <div class="project-type">Identification & Access Management</div>
+                        <p class="project-desc">
+                            RFID-based identification and management workflows for staff/students at FCT COE Zuba. Integrated with attendance and library modules.
+                        </p>
+                        <div class="project-tags">
+                            <span>Laravel</span><span>RFID Integration</span><span>MySQL</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Computer Based Test (CBT) -->
+                <article class="project-card" data-category="education">
+                    <div>
+                        <h3 class="project-name">CBT Application (FCT COE Zuba)</h3>
+                        <div class="project-type">Online Examination Platform</div>
+                        <p class="project-desc">
+                            Web-based CBT platform with question bank management, timed exams, and automated scoring. Used for student assessments.
+                        </p>
+                        <div class="project-tags">
+                            <span>PHP</span><span>JavaScript</span><span>MySQL</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- NHS Website & Staff Portal -->
+                <article class="project-card" data-category="healthcare">
+                    <div>
+                        <h3 class="project-name">Nigeria Hypertension Society (NHS) Portal</h3>
+                        <div class="project-type">Public Website + Staff Portal</div>
+                        <p class="project-desc">
+                            Public-facing website and internal staff portal for managing accounts, resources, and communications for the Nigeria Hypertension Society.
+                        </p>
+                        <div class="project-tags">
+                            <span>Laravel</span><span>jQuery</span><span>MySQL</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- School Management System -->
+                <article class="project-card" data-category="education">
+                    <div>
+                        <h3 class="project-name">School Management System (Awaleem Int'l)</h3>
+                        <div class="project-type">Full School Operations</div>
+                        <p class="project-desc">
+                            Student records, staff management, classes, fee payments, reporting, and parent portal.
+                        </p>
+                        <div class="project-tags">
+                            <span>Laravel</span><span>MySQL</span><span>Payment Integration</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Laboratory Management System -->
+                <article class="project-card" data-category="healthcare">
+                    <div>
+                        <h3 class="project-name">Lab Management System (Lab Network Pathology)</h3>
+                        <div class="project-type">Healthcare Lab Operations</div>
+                        <p class="project-desc">
+                            Patient records, lab history, test results, HR/staff management, invoicing, billing, and inventory management.
+                        </p>
+                        <div class="project-tags">
+                            <span>Laravel</span><span>REST API</span><span>MySQL</span><span>Billing</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== Contact ========== -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-kicker">Contact</div>
+                <h2 class="section-title">Let's Work Together</h2>
+                <p class="section-subtip">I'm open to remote and on-site opportunities, collaborations, or interesting projects.</p>
+            </div>
+
+            <div class="contact-grid">
+                <div>
+                    <div class="contact-card">
+                        <h3>Get in Touch</h3>
+                        <p>
+                            Feel free to reach out for freelance work, full-time roles, or any web development needs. I respond within 24 hours.
+                        </p>
+                        <ul class="contact-details">
+                            <li><span>Email:</span> harunadiyaulhaq111@gmail.com</li>
+                            <li><span>Phone:</span> +234 90 6549 1404</li>
+                            <li><span>Location:</span> Abuja, Nigeria</li>
+                            <li><span>GitHub:</span> <a href="#" style="color:#38bdf8">github.com/haruna-ndakwogi</a></li>
+                            <li><span>LinkedIn:</span> <a href="#" style="color:#38bdf8">linkedin.com/in/haruna-ndakwogi</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <form class="contact-form" id="contactForm">
+                        <h3 style="margin-bottom:0.8rem;">Send a Message</h3>
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input id="name" name="name" required placeholder="Your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input id="email" name="email" type="email" required placeholder="you@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message / Project details</label>
+                            <textarea id="message" name="message" required placeholder="Tell me about your project or opportunity..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                        <p class="form-note">
+                            This is a demo contact form. For now it shows a success message; you can later connect it to a backend script.
+                        </p>
+                        <div id="contactMessage"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    © <span id="year"></span> Haruna Diyaul'haq Ndakwogi. Built with HTML, CSS & jQuery.
+</footer>
+
+<button id="backToTop" aria-label="Back to top">↑</button>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+    $(function () {
+        $('#year').text(new Date().getFullYear());
+
+        $('#navToggle').on('click', function () {
+            $('#navLinks').toggleClass('open');
+        });
+
+        $('.nav-link').on('click', function (e) {
+            var target = $(this).attr('href');
+            if (target && target.startsWith('#')) {
+                e.preventDefault();
+                $('#navLinks').removeClass('open');
+                $('html, body').animate({
+                    scrollTop: $(target).offset().top - 70
+                }, 600);
+                $('.nav-link').removeClass('active');
+                $(this).addClass('active');
+            }
+        });
+
+        $(window).on('scroll', function () {
+            var scrollTop = $(this).scrollTop();
+            if (scrollTop > 200) {
+                $('#backToTop').addClass('show');
+                $('.site-header').addClass('scrolled');
+            } else {
+                $('#backToTop').removeClass('show');
+                $('.site-header').removeClass('scrolled');
+            }
+            $('section').each(function () {
+                var top = $(this).offset().top - 80;
+                var bottom = top + $(this).outerHeight();
+                if (scrollTop >= top && scrollTop <= bottom) {
+                    var id = $(this).attr('id');
+                    $('.nav-link').removeClass('active');
+                    $('.nav-link[href="#' + id + '"]').addClass('active');
+                }
+            });
+        });
+
+        $('#backToTop').on('click', function () {
+            $('html, body').animate({scrollTop: 0}, 600);
+        });
+
+        $('.filter-btn').on('click', function () {
+            var filter = $(this).data('filter');
+            $('.filter-btn').removeClass('active');
+            $(this).addClass('active');
+            if (filter === 'all') {
+                $('.project-card').fadeIn(200);
+            } else {
+                $('.project-card').each(function () {
+                    var category = $(this).data('category');
+                    if (category === filter) {
+                        $(this).fadeIn(200);
+                    } else {
+                        $(this).hide();
+                    }
+                });
+            }
+        });
+
+        $('#contactForm').on('submit', function (e) {
+            e.preventDefault();
+            $('#contactMessage')
+                .text('Thank you! Your message has been received (demo). I will get back to you soon.')
+                .addClass('visible');
+            this.reset();
+        });
+    });
+</script>
+</body>
+</html>
